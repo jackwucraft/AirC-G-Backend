@@ -1,10 +1,12 @@
-class Api::V1::GamesController < ApplicationController
+class Api::V1::GamesController < Api::V1::BaseController
   def index
     render json: { games: Game.all }
+    # PUT http://localhost:3000//api/v1/games
   end
 
   def show
     render json: { game: Game.find(params[:id]) }
+    # PUT http://localhost:3000//api/v1/games/${id}
   end
 
   def create
@@ -14,6 +16,7 @@ class Api::V1::GamesController < ApplicationController
     else
       render_error
     end
+    # POST http://localhost:3000//api/v1/games
   end
 
   def update
@@ -23,6 +26,7 @@ class Api::V1::GamesController < ApplicationController
     else
       render_error
     end
+    # PATCH http://localhost:3000//api/v1/games/${id}
   end
 
   private
