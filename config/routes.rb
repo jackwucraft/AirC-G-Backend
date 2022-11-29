@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
       namespace :v1 do
-        resources :games, only: %i[index show] # %i[index show create update]
+        resources :games, only: %i[index show create update]
       end
     end
   end
