@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Destroying all the games!!"
-Games.destroy_all
+Game.destroy_all
 
 puts "Creating 20 random games!"
 puts "loading games..."
@@ -14,9 +14,9 @@ puts "loading games..."
   Game.create(
     name: Faker::Game.title,
     description: Faker::Game.genre,
-    platform: Faker::Game.platform,
+    platform: ["xbox", "ps5", "switch"].sample,
     picture_url: "https://loremflickr.com/320/240/console",
-    price_per_day: rand(1..10).sample
+    price_per_day: rand(1..10)
   )
 end
-puts "#{games.count} games loaded."
+puts "#{Game.all.length} games loaded."
