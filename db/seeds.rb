@@ -13,7 +13,7 @@ puts "loading games..."
 20.times do
   Game.create(
     name: Faker::Game.title,
-    description: Faker::Game.genre,
+    description: "#{name} is a 2017 action-adventure game developed and published by Nintendo for the Nintendo Switch and Wii U consoles. The game is an installment of The Legend of Zelda series and is set at the end of its timeline. The player controls an amnesiac Link, who awakens from a hundred-year slumber, and attempts to regain his memories and prevent the destruction of Hyrule by Calamity Ganon.",
     platform: ["xbox", "ps5", "switch"].sample,
     picture_url: "https://loremflickr.com/320/240/console",
     price_per_day: rand(1..10)
