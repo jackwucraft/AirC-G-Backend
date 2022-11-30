@@ -1,5 +1,5 @@
 class Api::V1::SessionsController < Api::V1::BaseController
-  skip_before_action :verify_request
+  # skip_before_action :verify_request
 
   def login
     user = User.find_or_create_by!(open_id: fetch_open_id['openid'])
