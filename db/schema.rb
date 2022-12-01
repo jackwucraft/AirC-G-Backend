@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_093600) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_031416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "time_from"
+    t.date "time_to"
+    t.string "location"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -22,15 +32,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_093600) do
     t.string "picture_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_games_on_booking_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_likes_on_game_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "open_id"
     t.string "avartar_url"
     t.string "nickname"
-    t.string "address"
+    t.string "addressrails"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bookings", "users"
+  add_foreign_key "games", "bookings"
+  add_foreign_key "games", "users"
+  add_foreign_key "likes", "games"
+  add_foreign_key "likes", "users"
 end

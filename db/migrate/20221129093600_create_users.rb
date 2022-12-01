@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :open_id
       t.string :avartar_url
       t.string :nickname
-      t.string :address
+      t.string :addressrails
 
       t.timestamps
     end

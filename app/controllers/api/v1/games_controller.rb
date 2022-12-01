@@ -1,12 +1,12 @@
 class Api::V1::GamesController < Api::V1::BaseController
   def index
     render json: { games: Game.all }
-    # PUT http://localhost:3000//api/v1/games
+    ## PUT http://localhost:3000//api/v1/games
   end
 
   def show
     render json: { game: Game.find(params[:id]) }
-    # PUT http://localhost:3000//api/v1/games/${id}
+    ## PUT http://localhost:3000//api/v1/games/${id}
   end
 
   def create
@@ -16,7 +16,7 @@ class Api::V1::GamesController < Api::V1::BaseController
     else
       render_error
     end
-    # POST http://localhost:3000//api/v1/games
+    ## POST http://localhost:3000//api/v1/games
   end
 
   def update
@@ -26,12 +26,14 @@ class Api::V1::GamesController < Api::V1::BaseController
     else
       render_error
     end
-    # PATCH http://localhost:3000//api/v1/games/${id}
+    ## PUT http://localhost:3000//api/v1/games/${id}
   end
 
   private
 
   def game_params
-    params.require(:game).permit(:name, :description, :platform, :price_per_day)
+    params.require(:game).permit(:name, :description, :platform, :price_per_day, :user)
   end
 end
+
+# need booking and like_list controller
