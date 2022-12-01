@@ -21,6 +21,7 @@ class Api::V1::LikesController < ApplicationController
   end
 
   ## POST http://localhost:3000/api/v1/games/<PUT GAME ID HERE>/likes
+  ## DATA post should like this: { user_id: <PUT USER ID HERE> }
   ## if you send an existed id, it will destroy the like
   ## if you send an non-existed id, it will create a like
 end
