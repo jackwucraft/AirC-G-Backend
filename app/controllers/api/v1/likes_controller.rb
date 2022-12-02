@@ -4,7 +4,7 @@ class Api::V1::LikesController < ApplicationController
     @gamelist = @likelist.map(&:game)
     render json: { games: @gamelist }
   end
-  ## PUT http://localhost:3000/api/v1/users/<PUT USER ID HERE>/likelist
+  ## GET http://localhost:3000/api/v1/users/<PUT USER ID HERE>/likes
 
   def create_or_destroy
     @new_like = Like.new
