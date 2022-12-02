@@ -53,7 +53,7 @@ new_user1.games = games1
   new_user.save
 end
 index = 6
-rand(2..5).times do
+rand(1..3).times do
   new_like = Like.new
   new_like.game = Game.find(index)
   new_like.user = new_user1
