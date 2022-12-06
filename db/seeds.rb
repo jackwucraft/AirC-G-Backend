@@ -27,7 +27,8 @@ rand(2..5).times do
     description: "#{name} is a 2017 action-adventure product developed and published by Nintendo for the Nintendo Switch and Wii U consoles. The product is an installment of The Legend of Zelda series and is set at the end of its timeline. The player controls an amnesiac Link, who awakens from a hundred-year slumber, and attempts to regain his memories and prevent the destruction of Hyrule by Calamity Ganon.",
     platform: platformeg[:platform],
     picture_url: platformeg[:picture_url],
-    price_per_day: rand(1..10)
+    price_per_day: rand(1..10),
+    sort: "game"
   )
 end
 new_user1.products = products1
@@ -46,7 +47,8 @@ new_user1.products = products1
       description: "#{name} is a 2017 action-adventure product developed and published by Nintendo for the Nintendo Switch and Wii U consoles. The product is an installment of The Legend of Zelda series and is set at the end of its timeline. The player controls an amnesiac Link, who awakens from a hundred-year slumber, and attempts to regain his memories and prevent the destruction of Hyrule by Calamity Ganon.",
       platform: platformeg[:platform],
       picture_url: platformeg[:picture_url],
-      price_per_day: rand(1..10)
+      price_per_day: rand(1..10),
+      sort: "game"
     )
   end
   new_user.products = products
