@@ -1,23 +1,23 @@
 class Api::V1::LikesController < ApplicationController
   def show
     @likelist = Like.all.select { |like| like.user == User.find(params[:user_id]) }
-    @gamelist = @likelist.map(&:game)
-    render json: { games: @gamelist }
+    @productlist = @likelist.map(&:product)
+    render json: { products: @productlist }
   end
   ## GET http://localhost:3000/api/v1/users/<PUT USER ID HERE>/likes
 
   def create_or_destroy
     @new_like = Like.new
-    @game = Game.find(params[:game_id])
-    @new_like.game = @game
+    @product = Product.find(params[:product_id])
+    @new_like.product = @product
     user_id = params[:user_id]
-    if User.find(user_id).likes.map(&:game).include?(@game)
-      User.find(user_id).likes.each { |like| like.destroy if like.game == @game }
+    if User.find(user_id).likes.map(&:product).include?(@product)
+      User.find(user_id).likes.each { |like| like.destroy if like.product == @product }
     else
       @new_like.user = User.find(user_id)
       @new_like.save
     end
-    render json: { games: User.find(user_id).likes.map(&:game) }
+    render json: { products: User.find(user_id).likes.map(&:product) }
   end
 
   ## POST http://localhost:3000/api/v1/games/<PUT GAME ID HERE>/likes

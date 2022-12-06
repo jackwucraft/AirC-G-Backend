@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       # ! post 'login', to: 'sessions#login', as: :login
       get "users/:user_id/likes", to: 'likes#show'
-      post "games/:game_id/likes", to: 'likes#create_or_destroy'
-      resources :games, only: %i[index show create update]
+      post "products/:product_id/likes", to: 'likes#create_or_destroy'
+      resources :products, only: %i[index show create update]
     end
   end
 end
