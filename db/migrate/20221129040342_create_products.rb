@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :price_per_day
       t.string :brand
       t.string :picture_url
-      t.string :type
+      t.string :sort
       t.string :deal
       t.boolean :available
 

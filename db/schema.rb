@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_041350) do
     t.integer "price_per_day"
     t.string "platform"
     t.string "picture_url"
-    t.string "type"
+    t.string "sort"
     t.string "deal"
     t.boolean "available"
     t.datetime "created_at", null: false
