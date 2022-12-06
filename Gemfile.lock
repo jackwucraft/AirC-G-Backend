@@ -260,6 +260,7 @@ DEPENDENCIES
   bootstrap
   capybara
   debug
+  execjs (~> 2.8)
   faker
   font-awesome-sass (~> 6.1)
   importmap-rails
