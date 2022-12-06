@@ -1,5 +1,5 @@
 {
-  "name": "your-app-name",
+  "name": "airgnc",
   "scripts": {
     "dokku": {
       "predeploy": "bundle exec rake assets:precompile",
