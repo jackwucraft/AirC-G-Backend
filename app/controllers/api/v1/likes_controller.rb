@@ -1,4 +1,4 @@
-class Api::V1::LikesController < ApplicationController
+class Api::V1::LikesController < Api::V1::BaseController
   def show
     @likelist = Like.all.select { |like| like.user == User.find(params[:user_id]) }
     @productlist = @likelist.map(&:product)

@@ -6,7 +6,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      # ! post 'login', to: 'sessions#login', as: :login
+      # post 'login', to: 'sessions#login', as: :login
       get "users/:user_id/likes", to: 'likes#show'
       post "products/:product_id/likes", to: 'likes#create_or_destroy'
       resources :products, only: %i[index show create update]
