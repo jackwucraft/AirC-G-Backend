@@ -13,11 +13,13 @@ class Api::V1::LikesController < Api::V1::BaseController
     user_id = params[:user_id]
     if User.find(user_id).likes.map(&:product).include?(@product)
       User.find(user_id).likes.each { |like| like.destroy if like.product == @product }
+      message = "destroy"
     else
       @new_like.user = User.find(user_id)
       @new_like.save
+      message = "create"
     end
-    render json: { products: User.find(user_id).likes.map(&:product) }
+    render json: { products: User.find(user_id).likes.map(&:product), message: }
   end
 
   ## POST http://localhost:3000/api/v1/games/<PUT GAME ID HERE>/likes
