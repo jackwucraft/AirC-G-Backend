@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post 'login', to: 'sessions#login', as: :login
       get "users/:user_id/likes", to: 'likes#show'
       post "products/:product_id/likes", to: 'likes#create_or_destroy'
+      resources :users, only: %i[show update]
       resources :products, only: %i[index show create update]
     end
   end
