@@ -32,7 +32,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :platform, :price_per_day, :user)
+    params.require(:product).permit(:name, :description, :platform, :user)
   end
 end
 
