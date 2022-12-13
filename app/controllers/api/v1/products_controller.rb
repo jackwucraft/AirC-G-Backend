@@ -12,7 +12,8 @@ class Api::V1::ProductsController < Api::V1::BaseController
   def create
     @product = Product.new({ name: product_params[:name],
                              description: product_params[:description],
-                             platform: product_params[:platform] })
+                             platform: product_params[:platform],
+                             sort: "game" })
     @product.user = User.find(product_params[:user_id])
     if @product.save
       render json: { product: @product }, status: :created
@@ -22,7 +23,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
     ## POST http://localhost:3000/api/v1/products
   end
 
-  def update
+  def edit
     @product = Product.find(params[:id])
     if @product.update(product_params)
       render json: { product: @product }, status: :created
