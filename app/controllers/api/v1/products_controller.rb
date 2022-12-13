@@ -5,7 +5,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def show
-    render json: { product: Product.find(params[:id]) }
+    render json: { product: Product.find(params[:id]), user: Product.find(params[:id]).user}
     ## GET http://localhost:3000/api/v1/products/${id}
   end
 
