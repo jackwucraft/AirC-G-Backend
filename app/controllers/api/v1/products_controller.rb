@@ -10,7 +10,10 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.new({ name: product_params.name,
+                             description: product_params.description,
+                             platform: product_params.platform })
+    @product.user = User.find(product_params.user_id)
     if @product.save
       render json: { product: @product }, status: :created
     else
@@ -32,7 +35,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :platform, :user)
+    params.require(:product).permit(:name, :description, :platform, :user_id)
   end
 end
 
