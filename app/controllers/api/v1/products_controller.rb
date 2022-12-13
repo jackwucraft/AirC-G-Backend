@@ -33,6 +33,13 @@ class Api::V1::ProductsController < Api::V1::BaseController
     ## PUT http://localhost:3000/api/v1/products/${id}
   end
 
+  def destroy
+    Product.find(params[:id]).destroy
+    if Product.find(params[:id]).nil?
+      render json: { message: "success" }
+    end
+  end
+
   private
 
   def product_params
