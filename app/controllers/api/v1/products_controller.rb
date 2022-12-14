@@ -21,9 +21,9 @@ class Api::V1::ProductsController < Api::V1::BaseController
     ## POST http://localhost:3000/api/v1/products
   end
 
-  def edit
+  def update
     @product = Product.find(params[:id])
-    @product.sort = "game"
+    # @product.sort = "game"
     if @product.update(product_params)
       render json: { product: @product }, status: :created
     else
