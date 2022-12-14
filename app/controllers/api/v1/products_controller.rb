@@ -10,11 +10,9 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def create
-    @product = Product.new({ name: product_params[:name],
-                             description: product_params[:description],
-                             platform: product_params[:platform],
-                             sort: "game" })
+    @product = Product.new(product_params)
     @product.user = User.find(product_params[:user_id])
+    @product.sort = "game"
     if @product.save
       render json: { product: @product }, status: :created
     else
@@ -25,6 +23,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
 
   def edit
     @product = Product.find(params[:id])
+    @product.sort = "game"
     if @product.update(product_params)
       render json: { product: @product }, status: :created
     else
@@ -43,7 +42,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :platform, :user_id)
+    params.require(:product).permit(:name, :description, :platform, :picture_url, :user_id)
   end
 end
 
