@@ -33,8 +33,9 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
-    if Product.find(params[:id]).nil?
+    id = params[:id]
+    Product.find(id).destroy
+    if Product.find(id).nil?
       render json: { message: "success" }
     end
   end
