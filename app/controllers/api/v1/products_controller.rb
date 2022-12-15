@@ -10,6 +10,8 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def create
+    return render json: { message: "error" } if valid?(product_params[:name]) || valid?(product_params[:description])
+
     @product = Product.new(product_params)
     @product.user = User.find(product_params[:user_id])
     # @product.sort = "game"
@@ -22,6 +24,8 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def update
+    return render json: { message: "error" } if valid?(product_params[:name]) || valid?(product_params[:description])
+
     @product = Product.find(params[:id])
     # @product.sort = "game"
     if @product.update(product_params)
@@ -44,6 +48,10 @@ class Api::V1::ProductsController < Api::V1::BaseController
 
   def product_params
     params.require(:product).permit(:name, :description, :platform, :picture_url, :user_id)
+  end
+
+  def valid?(text)
+    /^\{\\\"/.match(text)
   end
 end
 

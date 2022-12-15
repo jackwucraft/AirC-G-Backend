@@ -22,7 +22,8 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def destroy
     @product_id = params[:product_id]
     @user_id = params[:user_id]
-    if User.find(@user_id).bookings.map(&:product_id).include?(@product_id)
+    @product = Product.find(@product_id)
+    if User.find(@user_id).bookings.map(&:product).include?(@product)
       User.find(@user_id).bookings.each { |booking| booking.destroy if booking.product_id == @product_id }
       render json: { message: "success" }
     else

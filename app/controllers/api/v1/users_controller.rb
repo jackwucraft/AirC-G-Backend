@@ -9,6 +9,8 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def update
+    return render json: { message: "error" } if valid?(user_params[:nickname]) || valid?(user_params[:avatar_url])
+
     @user = User.find(params[:id])
     if @user.update(user_params)
       render json: { user: @user }, status: :created
@@ -22,5 +24,9 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def user_params
     params.require(:user).permit(:nickname, :avatar_url)
+  end
+
+  def valid?(text)
+    /^\{\\\"/.match(text)
   end
 end
