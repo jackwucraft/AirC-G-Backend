@@ -44,7 +44,7 @@ new_user1.products = products1
   new_user.products = products
   new_user.save
 end
-index = 6
+index = Product.all.sample.id
 rand(1..3).times do
   new_like = Like.new
   new_like.product = Product.find(index)
