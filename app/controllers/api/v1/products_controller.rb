@@ -14,7 +14,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
 
     @product = Product.new(product_params)
     @product.user = User.find(product_params[:user_id])
-    # @product.sort = "game"
+    @product.sort = "game"
     if @product.save
       render json: { product: @product }, status: :created
     else
